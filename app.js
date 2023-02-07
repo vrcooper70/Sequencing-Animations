@@ -48,7 +48,7 @@ function shrink3() {
   }   
 )};
 
- //shrink1().then(shrink2).then(shrink3);
+ //shrink1().then(shrink2).then(shrink3).catch((error) => console.error(`Animation error ${error}`));
 
   // Using async await 
 
@@ -62,11 +62,15 @@ function shrink3() {
 
   async function shrinkAll(item) {
 
+    try {
     let first =  await animateAlice(alice1);
     let second = await animateAlice(alice2);
     let third = await animateAlice(alice3);
-
-    return  first + second + third;
+    }  catch(error) {
+      alert(error);
+    }
+  
   };
 
  shrinkAll();
+ 
